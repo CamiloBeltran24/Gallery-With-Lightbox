@@ -106,6 +106,35 @@ h1 {
             }
         }
     }
+    .changePages {
+        position: relative;
+        display: block;
+        padding: 40px 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 50px;
+        span {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            padding: 5px;
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-size: 100%;
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+            &.js-prev-page {
+                background-image: url("/assets/images/previous-back-svgrepo-com.svg")
+            }
+            &.js-next-page {
+                background-image: url("/assets/images/next-svgrepo-com.svg")
+            }
+            &:hover {
+                transform: scale(1.2);
+            }
+        }
+    }
 }
 
 .lightbox-overlay {

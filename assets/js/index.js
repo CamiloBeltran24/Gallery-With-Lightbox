@@ -9,9 +9,10 @@ function createLightbox() {}
 
 
 // Function to fetch images by category from Pexels API
-async function getImagesByCategory(category){
+async function getImagesByCategory(category, page){
 
-    let fetchURL = `${API_URL_IMAGES}search?query=${category}&per_page=20`;
+    let fetchURL = "";
+    fetchURL = `${API_URL_IMAGES}search?query=${category}&per_page=20`;
 
     try {
 
@@ -23,13 +24,26 @@ async function getImagesByCategory(category){
 
         const jsonResponse = await response.json();
         let photosCollection = jsonResponse.photos;
+        console.log(jsonResponse);
         console.log("Photos Collection:", photosCollection);
-        
-        createImagesCard(photosCollection)
+
+        createImagesCard(photosCollection);
+        startArrows(jsonResponse.next_page, jsonResponse.prev_page);
 
     } catch (error) {
         console.error("Error fetching images:", error);
     }
+}
+
+function startArrows(nextPage, prevPage) {
+    const nextArrow = document.querySelector('.js-next-page');
+    const prevarrow = document.querySelector('.js-prev-page');
+    nextArrow.addEventListener('click', () => {
+        if (nextPage) {
+            console.log({nextPage});
+            // getImagesByCategory(nextPage);
+        }
+    });
 }
 
 
@@ -39,7 +53,7 @@ function createImagesCard(images){
             <div class="image">
                 <a href="${image.src.large}" data-lightbox="gallery" >
                     <figure>
-                        <img src="${image.src.medium}" alt="${image.alt}" loading="lazy">
+                        <img src="${image.src.large}" alt="${image.alt}" loading="lazy">
                     </figure>
                 </a>
 
@@ -115,7 +129,7 @@ function activateLightbox() {
             button.addEventListener("click", (e) => {
                 e.preventDefault();
                 const imageUrl = button.getAttribute("href");
-                const imageAlt = button.getAttribute("alt");
+                const imageAlt = button.querySelector('img').getAttribute("alt");
                 createLightbox(imageUrl, imageAlt);
             });
         });
@@ -126,5 +140,5 @@ function activateLightbox() {
 
 
 
-getImagesByCategory("colombia");
+getImagesByCategory("Bikes");
 
