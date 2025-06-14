@@ -1,0 +1,250 @@
+$font: "Roboto", sans-serif;
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: $font;
+}
+
+h1 {
+    text-align: center;
+    font-family: $font;
+    font-size: 50px;
+    font-weight: 500;
+    margin: 30px 0;
+}
+
+
+.container {
+    max-width: 1500px;
+    width: 100%;
+    margin: 0 auto;
+
+    #js-images-container {
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 20px;
+        margin: 0 auto;
+        padding: 20px;
+
+
+        .image{
+            width: 100%;
+            max-width: 350px;
+            height: 300px;
+            border-radius: 8px;
+            overflow: hidden;
+            position: relative;
+            transition: all 0.3s ease-in-out;
+            border-radius: 12px;
+            overflow: hidden;
+
+            a {
+                background: none;
+                position: relative;
+                display: block;
+                width: 100%;
+                height: 100%;
+                text-decoration: none;
+
+            }
+
+            figure {
+                width: 100%;
+                height: 100%;
+            }
+
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                // border-radius: 8px;
+            }
+
+            .image-info {
+                background-color: rgba(#000000,0.5);
+                color: white;
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                width: 100%;
+                // height: 100%;
+                text-align: center;
+
+                h2 {
+                    font-size: 12px;
+                    font-weight: 600;
+                    display: block;
+                    margin: 7px 0;
+
+                    a {
+                        display: inline;
+                        color: white;
+                        font-size: 12px;
+                        transition: all 0.3s ease-in-out;
+
+                        &:hover {
+                            text-decoration: underline;
+                        }
+                    }
+
+                }
+
+                // h3 {
+                //     font-size: 16px;
+                //     font-weight: 400
+                // }
+            }
+
+
+
+            &:hover {
+                opacity: 0.7;
+            }
+        }
+    }
+}
+
+.lightbox-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .lightbox-close {
+        position: absolute;
+        display: grid;
+        place-content: center;
+        width: 30px;
+        height: 30px;
+        top: 25px;
+        right: 25px;
+        color: white;
+        font-size: 30px;
+        line-height: 20px;
+        cursor: pointer;
+        padding: 8px;
+        border-color: #f2f2f2;
+        border-radius: 50%;
+        transition: all 0.3s ease-in-out;
+        background-color: rgba(#000000,0.5);
+        transform-origin: center center;
+        display: none;
+
+        &:hover {
+            transform: rotate(180deg);
+        }
+    }
+
+    .lightbox-image-container{
+        position: relative;
+
+        img {
+            opacity: 0;
+        }
+
+        /* From Uiverse.io by david-mohseni */ 
+        .loader {
+            position: absolute;
+            width: 54px;
+            height: 54px;
+            border-radius: 10px;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            // opacity: 1;
+        }
+
+        .loader div {
+            width: 8%;
+            height: 24%;
+            background: rgb(128, 128, 128);
+            position: absolute;
+            left: 50%;
+            top: 30%;
+            opacity: 0;
+            border-radius: 50px;
+            box-shadow: 0 0 3px rgba(0,0,0,0.2);
+            animation: fade458 1s linear infinite;
+        }
+
+        @keyframes fade458 {
+        from {
+            opacity: 1;
+        }
+
+        to {
+            opacity: 0.25;
+        }
+        }
+
+        .loader .bar1 {
+            transform: rotate(0deg) translate(0, -130%);
+            animation-delay: 0s;
+        }
+
+        .loader .bar2 {
+            transform: rotate(30deg) translate(0, -130%);
+            animation-delay: -1.1s;
+        }
+
+        .loader .bar3 {
+            transform: rotate(60deg) translate(0, -130%);
+            animation-delay: -1s;
+        }
+
+        .loader .bar4 {
+            transform: rotate(90deg) translate(0, -130%);
+            animation-delay: -0.9s;
+        }
+
+        .loader .bar5 {
+            transform: rotate(120deg) translate(0, -130%);
+            animation-delay: -0.8s;
+        }
+
+        .loader .bar6 {
+            transform: rotate(150deg) translate(0, -130%);
+            animation-delay: -0.7s;
+        }
+
+        .loader .bar7 {
+            transform: rotate(180deg) translate(0, -130%);
+            animation-delay: -0.6s;
+        }
+
+        .loader .bar8 {
+            transform: rotate(210deg) translate(0, -130%);
+            animation-delay: -0.5s;
+        }
+
+        .loader .bar9 {
+            transform: rotate(240deg) translate(0, -130%);
+            animation-delay: -0.4s;
+        }
+
+        .loader .bar10 {
+            transform: rotate(270deg) translate(0, -130%);
+            animation-delay: -0.3s;
+        }
+
+        .loader .bar11 {
+            transform: rotate(300deg) translate(0, -130%);
+            animation-delay: -0.2s;
+        }
+
+        .loader .bar12 {
+            transform: rotate(330deg) translate(0, -130%);
+            animation-delay: -0.1s;
+        }
+
+    }
+}
